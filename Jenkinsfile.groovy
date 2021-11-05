@@ -8,7 +8,7 @@ pipeline{
             steps{
                 script{
                     echo "building application"
-                    bat 'mvn package'
+                    sh 'mvn package'
                 }
             }
         }
@@ -17,9 +17,9 @@ pipeline{
                 script{
                     echo "building docker image"
                     withCredentials([usernamepassword(credentialsid: 'docker-hub', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-                       bat 'docker build -f Dockerfile.dockerfile -t 8978677272/praveen:pra-2.0 .'
-                       bat 'echo $PASS | docker login -u $USERNAME --password-stdin'
-                       bat 'docker push 8978677272/praveen:pra-2.0'
+                       sh 'docker build -f Dockerfile.dockerfile -t 8978677272/praveen:pra-2.0 .'
+                       sh 'echo $PASS | docker login -u $USERNAME --password-stdin'
+                       sh 'docker push 8978677272/praveen:pra-2.0'
                     }    
                 }
             }
