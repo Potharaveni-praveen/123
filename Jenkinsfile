@@ -18,7 +18,7 @@ pipeline{
                     echo "building docker image"
                     withCredentials([usernamepassword(credentialsid: 'docker-hub', passwordVariable: 'PASS', usernameVariable: 'USER')]){
                        sh 'docker build -f Dockerfile.dockerfile -t 8978677272/praveen:pra-2.0 .'
-                       sh 'echo $PASS | docker login -u $USERNAME --password-stdin'
+                       sh 'echo $PASS | docker login -u $USER --password-stdin'
                        sh 'docker push 8978677272/praveen:pra-2.0'
                     }    
                 }
