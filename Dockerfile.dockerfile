@@ -3,7 +3,7 @@ FROM openjdk:8-jre-alpine
 EXPOSE 8080
 
 
-COPY ./target/helloworld.jar /usr/app/
+COPY ./target/helloworld-*.war /usr/app/
 WORKDIR /usr/app
 
-CMD java -jar helloworld.jar
+CMD java -war helloworld-*.war
