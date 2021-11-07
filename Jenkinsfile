@@ -12,7 +12,7 @@ pipeline {
                     -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVesrsion.nextIncrementalVersion} \
                     versions:commit'
                     def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
-                    def version = matcher[0] [1]
+                    def version = matcher[0][1]
                     env.IMAGE_NAME = "$version-$BUILD_NUMBER"
                 }
             }
