@@ -4,12 +4,12 @@ pipeline{
         maven 'maven:3.8'
     }       
     stages{
-        stage('increment version'{
+        stage('increment version'){
             steps{
                 script{
                     echo 'incrementing app version'
                     sh 'mvn build-helper:parse-version versions:set \
-                    -Dnewversion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVesrsion.nextIncrementalVersion} \
+                    -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVesrsion.nextIncrementalVersion} \
                     versions:commit'
                     def matcher = read file('pom.xml') =~ '<version>(.+)</version>'
                     def version = matcher[0] [1]
