@@ -30,7 +30,7 @@ pipeline {
                 script {
                     echo "building docker image"
                     withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-                       sh "docker build -f Dockerfile.dockerfile -t 8978677272/praveen:${IMAGE_NAME} ."
+                       sh "docker build -t 8978677272/praveen:${IMAGE_NAME} ."
                        sh "echo $PASS | docker login -u $USER --password-stdin"
                        sh "docker push 8978677272/praveen:${IMAGE_NAME}"
                     }    
