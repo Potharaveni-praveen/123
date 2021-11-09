@@ -48,7 +48,6 @@ pipeline {
                 steps{
                     script{
                         withCredentials([usernamePassword(credentialsId: 'Pra', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-                            sh 'git config --global --unset http.proxy' 
                             sh 'git config --global --unset https.proxy'
                        
                             sh 'git status'
