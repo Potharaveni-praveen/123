@@ -48,6 +48,7 @@ pipeline {
                 steps{
                     script{
                         withCredentials([usernamePassword(credentialsId: 'Pra', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+                            git remote add origin
                           
                             sh 'git status'
                             sh 'git branch'
