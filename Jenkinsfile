@@ -44,5 +44,18 @@ pipeline {
                 }
             }
         }
+            stage('commit the update'){
+                steps{
+                    script{
+                        withCredentials([usernamePassword(credentialsId: 'Pra', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+                            sh "git remote set-url origin https://${USER}:${PASS}@github.com/Potharaveni-praveen/123.git"
+                            sh 'git add .'
+                            sh 'git commit -m "new version'
+                            sh 'git push origin HEAD:123'
+                        }
+                    }
+                }
+            }
+        }
     }
-}
+
