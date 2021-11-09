@@ -48,6 +48,7 @@ pipeline {
                 steps{
                     script{
                         withCredentials([usernamePassword(credentialsId: 'Pra', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+                            sh "echo $PASS | git login -u $USER --password-stdin"
                             sh 'git config --global user.email "Jenkins@example.com"'
                             sh 'git config --global user.name "Jenkins"'
                             
