@@ -48,8 +48,7 @@ pipeline {
                 steps{
                     script{
                         withCredentials([usernamePassword(credentialsId: 'Pra', passwordVariable: 'PASS', usernameVariable: 'USER')]){
-                            sh 'git remote add origin https://github.com/Potharaveni-praveen/123.git'
-                          
+                    
                             sh 'git status'
                             sh 'git branch'
                             sh 'git config --list'
@@ -57,7 +56,7 @@ pipeline {
                             sh "git remote set-url origin https://${USER}:${PASS}@github.com/Potharaveni-praveen/123.git"
                             sh 'git add .'
                             sh 'git commit -m "new version"'
-                            sh 'git push origin HEAD:123'
+                            sh 'git push origin master'
                         }
                     }
                 }
